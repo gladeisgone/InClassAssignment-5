@@ -24,15 +24,21 @@ The base cases occur when the sublists are either empty or have one element, as 
  '''
 
 
+from numpy import number
+
 def quicksort(numbers_in_a_list):
+    if len(numbers_in_a_list) == 1:
+        return numbers_in_a_list[0]
 
 #WRITE YOUR CODE HERE FOR THE RECURSIVE SORTING FUNCTION
 
-    return #WHAT DOES IT RETURN?
+    return quicksort(numbers_in_a_list[1:]) if numbers_in_a_list[0] < numbers_in_a_list[1] else quicksort(numbers_in_a_list[:1] + numbers_in_a_list[2:])
 
+numlist = '/Users/reno/Documents/Code/InClassAssignment-5/InClassAssignment-5/numbers.txt'
 
 def main():
-
+    sortedlist = []
+    quicksort(numlist)
 # WRITE YOUR MAIN FUNCTION HERE TO READ IN YOUR numbers.txt FILE, RUN THE LIST THROUGH YOUR SORTING ALGORITHM, 
 # AND WRITE OUT YOUR FILE
 
