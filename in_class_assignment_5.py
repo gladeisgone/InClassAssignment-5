@@ -30,6 +30,25 @@ def quicksort(numbers_in_a_list):
     if len(numbers_in_a_list) == 1:
         return numbers_in_a_list[0]
 
+def quicksort(a, low, high):
+    if low < high:
+
+        pivot = a[high]
+        index = low
+
+        for item in range(low, high):
+            if a[item] <= pivot:
+            
+                a[item], a[index] = a[index], a[item]
+                index += 1
+    
+        a[index], a[high] = a[high], a[index]
+
+        quicksort(a, low, index-1)
+        quicksort(a,index+1, high)
+
+    return a
+
 #WRITE YOUR CODE HERE FOR THE RECURSIVE SORTING FUNCTION
 
     return quicksort(numbers_in_a_list[1:]) if numbers_in_a_list[0] < numbers_in_a_list[1] else quicksort(numbers_in_a_list[:1] + numbers_in_a_list[2:])
@@ -42,7 +61,7 @@ def main():
 # WRITE YOUR MAIN FUNCTION HERE TO READ IN YOUR numbers.txt FILE, RUN THE LIST THROUGH YOUR SORTING ALGORITHM, 
 # AND WRITE OUT YOUR FILE
 
-    return #WHAT DOES IT RETURN?
+    return quicksort(numlist)
 
 
 if __name__ == "__main__":
